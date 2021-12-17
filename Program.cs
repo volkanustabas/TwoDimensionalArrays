@@ -17,12 +17,14 @@ namespace TwoDimensionalArrays
                 {
                     var lines = File.ReadAllLines(currentFile);
                     var jagged = lines.Select(line => line.Split(',').ToArray()).ToArray();
-
+                    var jaggedCount = lines.Max(x => x.Split(',').Length);
 
                     for (var i = 0; i < lines.Length; i++)
                     {
-                        for (var j = 0; j < jagged.Length - 1; j++)
-                            Console.Write(currentFile.Split('\\').Last() + @" - " + jagged[i][j] + @" * ");
+                        Console.Write(currentFile.Split('\\').Last() + @" - ");
+
+                        for (var j = 0; j < jaggedCount; j++) Console.Write(jagged[i][j] + @" * ");
+
                         Console.WriteLine();
                     }
                 }
