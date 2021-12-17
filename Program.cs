@@ -6,16 +6,30 @@ namespace TwoDimensionalArrays
 {
     internal class Program
     {
+        private const string Path = @"D:\TestTextFile";
+
         private static void Main(string[] args)
         {
-            var lines = File.ReadAllLines(@"D:\01.txt");
-            var jagged = lines.Select(line => line.Split(',').ToArray()).ToArray();
-
-
-            for (var i = 0; i < lines.Length; i++)
+            try
             {
-                for (var j = 0; j < jagged.Length - 1; j++) Console.Write(jagged[i][j] + @" * ");
-                Console.WriteLine();
+                var txtFiles = Directory.EnumerateFiles(Path, "*.txt");
+                foreach (var currentFile in txtFiles)
+                {
+                    var lines = File.ReadAllLines(currentFile);
+                    var jagged = lines.Select(line => line.Split(',').ToArray()).ToArray();
+
+
+                    for (var i = 0; i < lines.Length; i++)
+                    {
+                        for (var j = 0; j < jagged.Length - 1; j++) Console.Write(jagged[i][j] + @" * ");
+                        Console.WriteLine();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
 
             Console.ReadKey();
