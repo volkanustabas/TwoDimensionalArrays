@@ -21,7 +21,8 @@ namespace TwoDimensionalArrays
 
                     for (var i = 0; i < lines.Length; i++)
                     {
-                        for (var j = 0; j < jagged.Length - 1; j++) Console.Write(jagged[i][j] + @" * ");
+                        for (var j = 0; j < jagged.Length - 1; j++)
+                            Console.Write(currentFile.Split('\\').Last() + @" - " + jagged[i][j] + @" * ");
                         Console.WriteLine();
                     }
                 }
